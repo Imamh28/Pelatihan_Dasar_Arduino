@@ -26,25 +26,51 @@ void loop() {
   
   // Menghitung jarak berdasarkan waktu tempuh
   distance = (duration * 0.0343) / 2;
-  
-  if (distance > 0 && distance < MAX_DISTANCE) {
+
+  if (distance >= 0 && distance <= 20){ 
+    myservo.write(30);
+    
     Serial.print("Jarak: ");
     Serial.print(distance);
     Serial.println(" cm");
+
+    delay(100);
+  }else if(distance >= 21 && distance <= 40){
+    myservo.write(60);
     
-    // Map nilai jarak menjadi sudut untuk servo motor (misalnya, 0 derajat hingga 180 derajat)
-    int angle = map(distance, 2, 50, 0, 180);
+    Serial.print("Jarak: ");
+    Serial.print(distance);
+    Serial.println(" cm");
+
+    delay(100);
+  }else{
+    myservo.write(90);
     
-    // Batasi sudut agar tidak melebihi batas tertentu
-    angle = constrain(angle, 0, 180);
-    
-    // Menggerakkan servo motor sesuai dengan sudut yang dihitung
-    myservo.write(angle);
-    
-    delay(100); // Delay untuk memberikan waktu servo motor bergerak
-  } else {
-    Serial.println("Tidak dapat mendeteksi objek.");
+    Serial.print("Jarak: ");
+    Serial.print(distance);
+    Serial.println(" cm");
+
+    delay(100);
   }
+  
+//  if (distance > 0 && distance < MAX_DISTANCE) {
+//    Serial.print("Jarak: ");
+//    Serial.print(distance);
+//    Serial.println(" cm");
+//    
+//    // Map nilai jarak menjadi sudut untuk servo motor (misalnya, 0 derajat hingga 180 derajat)
+//    int angle = map(distance, 2, 50, 0, 180);
+//    
+//    // Batasi sudut agar tidak melebihi batas tertentu
+//    angle = constrain(angle, 0, 180);
+//    
+//    // Menggerakkan servo motor sesuai dengan sudut yang dihitung
+//    myservo.write(angle);
+//    
+//    delay(100); // Delay untuk memberikan waktu servo motor bergerak
+//  } else {
+//    Serial.println("Tidak dapat mendeteksi objek.");
+//  }
   
   delay(500); // Delay sebelum melakukan pengukuran berikutnya
 }
