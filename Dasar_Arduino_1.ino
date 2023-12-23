@@ -1,3 +1,5 @@
+#include <Servo.h>
+
 #define TRIG_PIN 9  // Pin trigger sensor ultrasonik
 #define ECHO_PIN 10 // Pin echo sensor ultrasonik
 #define SERVO_PIN 6 // Pin servo motor
